@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-frontend
+  labels:
+    app.kubernetes.io/name: test-frontend
+    app.kubernetes.io/instance: frontend
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app.kubernetes.io/name: test-frontend
+    app.kubernetes.io/instance: frontend

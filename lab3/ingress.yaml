@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-frontend
+spec:
+  tls:
+    - hosts:
+        - my-test-frontend.com
+      secretName: test-frontend-secret
+  rules:
+    - host: my-test-frontend.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: test-frontend
+                port:
+                  number: 3000
